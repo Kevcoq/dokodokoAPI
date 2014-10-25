@@ -37,7 +37,7 @@ Users related user of the **DokoDoko API**
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "mail": "jean.dupont@aol.fr",
+                "email": "jean.dupont@aol.fr",
                 "registerDate": 1414242910342
             }, 
             {   
@@ -48,7 +48,7 @@ Users related user of the **DokoDoko API**
                 "city": "Versaille",
                 "country": "France",
                 "phone": "0600010205",
-                "mail": "marcel.durand@club-internet.fr",
+                "email": "marcel.durand@club-internet.fr",
                 "registerDate": 1414242910348}
         ]
 
@@ -67,7 +67,7 @@ Users related user of the **DokoDoko API**
             "country": "France", 
             "birthDate": "1960-05-15", 
             "phone": "0600010203", 
-            "mail": "jean.dupont@aol.fr", 
+            "email": "jean.dupont@aol.fr", 
             "password": "azerty" 
         }
 
@@ -80,7 +80,7 @@ Users related user of the **DokoDoko API**
         [
             {
                 "error_code": 1, 
-                "error": "Mail already exists" 
+                "error": "Email already exists" 
             },
             { 
                 "error_code": 2,
@@ -132,7 +132,7 @@ A single user object with all its details
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "mail": "jean.dupont@aol.fr",
+                "email": "jean.dupont@aol.fr",
                 "registerDate": 1414242910342
             }
 
@@ -146,11 +146,11 @@ A single user object with all its details
   
   
             
-## User [/user/mail/{mail}]
+## User [/user/email/{email}]
 A single user object with all its details
 
 + Parameters
-    + mail (required, string, `"jean.dupont@aol.fr"`) ... String  mail of the User.
+    + email (required, string, `"jean.dupont@aol.fr"`) ... String  email of the User.
 
 ### Retrieve a User [POST]
 + Request (application/json)
@@ -176,7 +176,7 @@ A single user object with all its details
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "mail": "jean.dupont@aol.fr",
+                "email": "jean.dupont@aol.fr",
                 "registerDate": 1414242910342
             }
 
@@ -222,7 +222,7 @@ A single user object with all its details
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "mail": "jean.dupont@aol.fr",
+                "email": "jean.dupont@aol.fr",
                 "registerDate": 1414242910342
             }
  
@@ -246,7 +246,7 @@ Log the user to the application and retrive is sessionKey.
 
         [
             { 
-                "mail": "jean.dupont@aol.fr",
+                "email": "jean.dupont@aol.fr",
                 "password": "azerty" 
             },
             { 
@@ -428,7 +428,7 @@ Update the profile of an User.
             "city": "Paris", 
             "country": "France", 
             "phone": "0600010203", 
-            "mail": "jean.dupont@aol.fr", 
+            "email": "jean.dupont@aol.fr", 
             "password": "azerty" 
         }
 
