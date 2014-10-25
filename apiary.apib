@@ -491,13 +491,35 @@ Dokos related doko of the **DokoDoko API**
 
 
 ## Dokos Collection [/dokos]
-### List all doko [GET]
+### List all doko [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
 + Response 200 (application/json)
 
         [
-            doko1
-        , 
-            doko2        
+            {
+                "id": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "userId": 1,
+                "date": 1414258311572,
+                "text": "Avec des potes.",
+                "picture": null
+            },
+            {
+                "id": 2,
+                "latitude": 1.856614,
+                "longitude": 50.3522219,
+                "userId": 1,
+                "date": 1414258327303,
+                "text": null,
+                "picture": null
+            }
         ]
  
  
