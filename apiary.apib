@@ -1,0 +1,690 @@
+FORMAT: 1A
+
+# DokoDoko
+DokoDoko API is a *mobile application* where you share your location with your friends so that you join for a good time.
+
+
+
+
+
+
+
+
+
+
+
+# Group Users
+Users related user of the **DokoDoko API**
+
+
+## Users Collection [/users]
+### List all user [GET]
++ Response 200 (application/json)
+
+        [
+            {   
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "mail": "jean.dupont@aol.fr",
+                "registerDate": 1414242910342
+            }, 
+            {   
+                "id": 2,
+                "lastName": "Durand",
+                "firstName": "Marcel",
+                "birthDate": -309448600000,
+                "city": "Versaille",
+                "country": "France",
+                "phone": "0600010205",
+                "mail": "marcel.durand@club-internet.fr",
+                "registerDate": 1414242910348}
+        ]
+
+
+
+
+
+
+### Create a User [PUT]
++ Request (application/json)
+
+        { 
+            "firstName": "Jean", 
+            "lastName": "Dupont", 
+            "city": "Paris", 
+            "country": "France", 
+            "birthDate": "1960-05-15", 
+            "phone": "0600010203", 
+            "mail": "jean.dupont@aol.fr", 
+            "password": "azerty" 
+        }
+
++ Response 201 (application/json)
+
+        {}
+        
++ Response 400 (application/json)
+    
+        [
+            {
+                "error_code": 1, 
+                "error": "Mail already exists" 
+            },
+            { 
+                "error_code": 2,
+                "error": "Phone already exists" 
+            }
+        ] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## User [/user/{id}]
+A single user object with all its details
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the User.
+
+### Retrieve a User [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+        
+            {
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "mail": "jean.dupont@aol.fr",
+                "registerDate": 1414242910342
+            }
+
+
+
+  
+  
+  
+  
+  
+  
+  
+            
+## User [/user/mail/{mail}]
+A single user object with all its details
+
++ Parameters
+    + mail (required, string, `"jean.dupont@aol.fr"`) ... String  mail of the User.
+
+### Retrieve a User [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+            
+            {
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "mail": "jean.dupont@aol.fr",
+                "registerDate": 1414242910342
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+## User [/user/phone/{phone}]
+A single user object with all its details
+
++ Parameters
+    + phone (required, string, `"0600000000"`) ... String  phone of the User.
+
+### Retrieve a User [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+            
+            {
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "mail": "jean.dupont@aol.fr",
+                "registerDate": 1414242910342
+            }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+            
+## User [/user/login/]
+Log the user to the application and retrive is sessionKey.
+
+### Login a User [POST]
++ Request (application/json)
+
+        [
+            { 
+                "mail": "jean.dupont@aol.fr",
+                "password": "azerty" 
+            },
+            { 
+                "phone": "0600010203", 
+                "password": "azerty" 
+            }
+        ]
+
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+    
+            { 
+                "id" : 1, 
+                "sessionKey" : "afcgggv54czgvegre" 
+            }
+            
++ Response 400 (application/json)
+
+    + Body
+    
+            [
+                { 
+                    "error_code": 1, 
+                    "error": "Incorrect username" 
+                },
+                { 
+                    "error_code": 2, 
+                    "error": "Incorrect password" 
+                }
+            ]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+## User [/user/verifyKey/]
+Verify the key of the User. This is an info not an endpoint.
+
+### Verify the Key of an User [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r" 
+        }
+        
++ Response 200 (application/json)
+
+        [ 
+            true, 
+            false 
+        ]
+
++ Response 400 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+            
+## User [/user/logout/]
+Logout the user.
+
+### Disconnect a User [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r" 
+        }
+        
++ Response 200 (application/json)
+
+        {}
+
++ Response 400 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2, 
+                "error": "The session has expired." 
+            }
+        ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+## User [/user/forgetPassword/]
+Not implemented
+
+###ForgetPassword [POST]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {}
+        
++ Response 400 (application/json)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## User [/user/updateProfile/]
+Update the profile of an User.
+
+### Update Profile [POST]
++ Request (application/json)
+
+        { 
+            "id": 1,
+            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r",
+            "city": "Paris", 
+            "country": "France", 
+            "phone": "0600010203", 
+            "mail": "jean.dupont@aol.fr", 
+            "password": "azerty" 
+        }
+
++ Response 200 (application/json)
+
+        {}
+
++ Response 400 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2, 
+                "error": "The session has expired." 
+            }
+        ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Group Dokos
+Dokos related doko of the **DokoDoko API**
+
+
+
+
+
+
+
+## Dokos Collection [/dokos]
+### List all doko [GET]
++ Response 200 (application/json)
+
+        [
+            doko1
+        , 
+            doko2        
+        ]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+        
+## Doko Create [/dokos/{sessionKey}/]
++ Parameters
+    + sessionKey (required, string, `"afcgggv54czgvegre"`) ... String  sessionKey of the User.
+    
+
+### Create a Doko [POST]
++ Request (application/json)
+
+        {
+            "userId": 1,
+            "latitude": 48.856614,
+            "longitude": 2.3522219,
+            "text": "Avec des potes.",
+            "picture": "byte[]"
+        }
+        
++ Response 201 (application/json)
+
+        {}
+        
++ Response 400 (application/json)
+    
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2, 
+                "error": "The session has expired." 
+            }
+        ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Group Groups
+Groups related groups of the **DokoDoko API**
+
+
+## Groups Collection  [/groups]
+### List all groups [GET]
++ Response 200 (application/json)
+
+        [{
+          nameGroup: "superGroup1",[{pseudo :"titi}{"pseudo":"tata"}]
+        }, {
+           "nameGroup: "superGroup2",[{"pseudo" :"paul"}{"pseudo":"tata"}]
+        }]
+
+    
+### Create a group [POST]
++ Request (application/json)
+
+        { "sessionKey": "afcgggv54czgvegre", "groupName":"superGroup" }
+    
++ Response 201 (application/json) 
+
+         { statut: true}
+        
++ Response 400 (application/json) 
+
+          { "error_code": 1, "error": "This group already exist." }
+
+
+
+
+## Group  [/groups/{groupName}]
+A single Group object with all its all friends
++ Parameters
+    + groupName (required, string, `"superGroup"`) ... String  groupName.
+
+### Retrieve a Group [GET]
++ Response 200 (application/json)
+
+    + Header
+
+            X-My-Header: The Value
+
+    + Body
+
+            { "groupName": superGroup, [{"pseudo" :"titi}{"pseudo":"tata"}]}
+
+
+### Delete a group [POST]
++ Request (application/json)
+
+        {"sessionKey": "agjci456gcg65fxq46", "groupName":"superGroup" }
+        
++ Response 201 (application/json)
+        
+        { statut: true}
++   Response 400 (application/json)
+
+         { "error_code": 1, "error": "User with this sessionKey not found." }
+         
++   Response 400 (application/json) 
+       
+         {"error_code": 2, "error": "You don't have the right to delete this group." }
+
++   Response 400 (application/json)
+
+         {"error_code": 3, "error": "This group doesn't exist." }
+
+
+
+
+
+## Group [/group/{groupName}/addFiend/]
+
+
+### Add friend in group [POST]
+
++ Request (application/json)
+        
+        {"sessionKey": "agjci456gcg65fxq46", "friendId":"42", "groupName":"superGroup" }
+
++   Response 201 (application/json)
+
+        { statut: true}
+        
++   Response 400 (application/json)
+
+         { "error_code": 1, "error": "User with this sessionKey not found." }
+         
++   Response 400 (application/json)
+
+         {"error_code": 2, "error": "This group doesn't exist." }         
+         
++   Response 400 (application/json)
+
+         { "error_code": 3, "error": "this user doesn't exist." }
+         
+         
+   
+   
+   
+   
+         
+## Group [/group/acceptFriendRequest/]
+
+
+### accept friend request [POST]
+
++   Request (application/json)
+        
+        {"sessionKey": "agjci456gcg65fxq46", "requestID":"23", "accept":"true" , "groupName":"superGroup"}
+
++   Response 201 (application/json)
+
+        { statut: true}
+        
++   Response 400 (application/json)
+
+         { "error_code": 1, "error": "User with this sessionKey not found." }
+         
++   Response 400 (application/json)
+
+         { "error_code": 2, "error": "this requestID doesn't found." }
+         
++   Response 400 (application/json)
+
+         {"error_code": 3, "error": "This group doesn't exist." }         
+ 
+ 
+ 
+ 
+ 
+         
+## Group [/group/deleteFriend/]
+
+
+### delete friend  [DELETE]
+
++   Request (application/json)
+        
+        {"sessionKey": "agjci456gcg65fxq46", "friendId":"42"}
+
++   Response 201 (application/json)
+
+        { statut: true}
+        
++   Response 400 (application/json)
+
+         { "error_code": 1, "error": "User with this sessionKey not found." }
+         
++   Response 400 (application/json)
+
+         { "error_code": 2, "error": "This user doesn't found." }
+         
++   Response 400 (application/json)
+
+         {"error_code": 3, "error": "This group doesn't exist." }         
+
+         
+         
