@@ -18,7 +18,14 @@ Users related user of the **DokoDoko API**
 
 
 ## Users Collection [/users]
-### List all user [GET]
+### List all user [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
 + Response 200 (application/json)
 
         [
@@ -101,7 +108,14 @@ A single user object with all its details
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the User.
 
-### Retrieve a User [GET]
+### Retrieve a User [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
 + Response 200 (application/json)
 
     + Header
@@ -138,7 +152,14 @@ A single user object with all its details
 + Parameters
     + mail (required, string, `"jean.dupont@aol.fr"`) ... String  mail of the User.
 
-### Retrieve a User [GET]
+### Retrieve a User [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
 + Response 200 (application/json)
 
     + Header
@@ -177,7 +198,14 @@ A single user object with all its details
 + Parameters
     + phone (required, string, `"0600000000"`) ... String  phone of the User.
 
-### Retrieve a User [GET]
+### Retrieve a User [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
 + Response 200 (application/json)
 
     + Header
