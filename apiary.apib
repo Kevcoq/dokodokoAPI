@@ -586,11 +586,24 @@ Groups related groups of the **DokoDoko API**
 ### List all groups [GET]
 + Response 200 (application/json)
 
-        [{
-          nameGroup: "superGroup1",[{"pseudo":"titi"} {"pseudo":"tata"}]
-        }, {
-           nameGroup: "superGroup2",[{"pseudo" :"paul"}, {"pseudo":"tata"}]
-        }]
+        [
+            {
+                nameGroup: "superGroup1",
+                users:
+                [
+                    {"pseudo":"titi"},
+                    {"pseudo":"tata"}
+                ]
+            },
+            {
+                nameGroup: "superGroup2",
+                users:
+                [
+                    {"pseudo" :"paul"},
+                    {"pseudo":"darkvador"}
+                ]
+            }
+        ]
 
     
 ### Create a group [POST]
