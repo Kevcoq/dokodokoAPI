@@ -481,6 +481,13 @@ Update the profile of an User.
 
 
 
+
+
+
+
+
+
+
 # Group Dokos
 Dokos related doko of the **DokoDoko API**
 
@@ -527,6 +534,46 @@ Dokos related doko of the **DokoDoko API**
  
  
  
+
+
+
+## Doko Create [/dokos/{distance}/{sessionKey}/]
++ Parameters
+    + distance (required, double, `15`) ... Double  distance of the User to find Doko by Scope.
+    + sessionKey (required, string, `"afcgggv54czgvegre"`) ... String  sessionKey of the User.
+    
+
+### List Doko By scope [POST]
++ Request (application/json)
+
+        {
+            "userId": 1,
+            "latitude": 48.856614,
+            "longitude": 2.3522219
+        }
+        
++ Response 200 (application/json)
+
+        {}
+        
++ Response 400 (application/json)
+    
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2, 
+                "error": "The session has expired." 
+            }
+        ]
+
+
+
+
+ 
+ 
  
  
  
@@ -550,7 +597,17 @@ Dokos related doko of the **DokoDoko API**
         
 + Response 201 (application/json)
 
-        {}
+        [
+            {
+                "id": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "userId": 1,
+                "date": 1414258311572,
+                "text": "Avec des potes.",
+                "picture": null
+            }
+        ]
         
 + Response 400 (application/json)
     
@@ -564,6 +621,27 @@ Dokos related doko of the **DokoDoko API**
                 "error": "The session has expired." 
             }
         ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
