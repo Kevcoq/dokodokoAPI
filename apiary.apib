@@ -102,19 +102,39 @@ Users related user of the **DokoDoko API**
 
 
 
-## User [/user/{id}]
+## User [/user/]
 A single user object with all its details
 
-+ Parameters
-    + id (required, number, `1`) ... Numeric `id` of the User.
 
 ### Retrieve a User [POST]
 + Request (application/json)
 
-        { 
-            "id" : 1, 
-            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
-        }
+        [
+            {
+                "id" : 1,
+                "user" :
+                {
+                    "id" : 1, 
+                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+                }
+            },
+            {
+                "email" : "jean.dupont@aol.fr",
+                "user" :
+                {
+                    "id" : 1, 
+                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+                }
+            },
+            {
+                "phone" : "0600010203",
+                "user" :
+                {
+                    "id" : 1, 
+                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+                }
+            },
+        ]
         
 + Response 200 (application/json)
 
@@ -135,109 +155,15 @@ A single user object with all its details
                 "email": "jean.dupont@aol.fr",
                 "registerDate": 1414242910342
             }
-
-
-
-  
-  
-  
-  
-  
-  
-  
-            
-## User [/user/email/{email}]
-A single user object with all its details
-
-+ Parameters
-    + email (required, string, `"jean.dupont@aol.fr"`) ... String  email of the User.
-
-### Retrieve a User [POST]
-+ Request (application/json)
-
-        { 
-            "id" : 1, 
-            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
-        }
-        
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-            
-            {
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
-                "registerDate": 1414242910342
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-## User [/user/phone/{phone}]
-A single user object with all its details
-
-+ Parameters
-    + phone (required, string, `"0600000000"`) ... String  phone of the User.
-
-### Retrieve a User [POST]
-+ Request (application/json)
-
-        { 
-            "id" : 1, 
-            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
-        }
-        
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-            
-            {
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
-                "registerDate": 1414242910342
-            }
  
  
  
  
  
  
- 
- 
- 
- 
- 
- 
-            
+
+
+
 ## User [/user/login/]
 Log the user to the application and retrive is sessionKey.
 
@@ -497,7 +423,7 @@ Dokos related doko of the **DokoDoko API**
 
 
 
-## Dokos Collection [/dokos]
+## Dokos Collection [/dokos/all]
 ### List all doko [POST]
 + Request (application/json)
 
@@ -537,62 +463,20 @@ Dokos related doko of the **DokoDoko API**
 
 
 
-## Doko Create [/dokos/{distance}/{sessionKey}/]
-+ Parameters
-    + distance (required, double, `15`) ... Double  distance in km of the User to find Doko by Scope.
-    + sessionKey (required, string, `"afcgggv54czgvegre"`) ... String  sessionKey of the User.
-    
+## Doko Create [/dokos/]
 
-### List Doko By scope [POST]
+### Create a Doko [PUT]
 + Request (application/json)
 
         {
-            "userId": 1,
-            "latitude": 48.856614,
-            "longitude": 2.3522219
-        }
-        
-+ Response 200 (application/json)
-
-        {}
-        
-+ Response 400 (application/json)
-    
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2, 
-                "error": "The session has expired." 
+            "sessionKey" : "0qaj0z84vdxjgfsewnn6o0ox4otyzzzi",
+            "doko" : {
+                "userId": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "text": "Avec des potes.",
+                "picture": "byte[]"
             }
-        ]
-
-
-
-
- 
- 
- 
- 
- 
- 
-        
-## Doko Create [/dokos/{sessionKey}/]
-+ Parameters
-    + sessionKey (required, string, `"afcgggv54czgvegre"`) ... String  sessionKey of the User.
-    
-
-### Create a Doko [POST]
-+ Request (application/json)
-
-        {
-            "userId": 1,
-            "latitude": 48.856614,
-            "longitude": 2.3522219,
-            "text": "Avec des potes.",
-            "picture": "byte[]"
         }
         
 + Response 201 (application/json)
@@ -621,6 +505,39 @@ Dokos related doko of the **DokoDoko API**
                 "error": "The session has expired." 
             }
         ]
+
+
+
+### List Doko By scope & Group [POST]
++ Request (application/json)
+
+        {
+            "sessionKey" : "0qaj0z84vdxjgfsewnn6o0ox4otyzzzi",
+            "distance" : 15,
+            "doko" : {
+                "userId": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219
+            }
+        }
+        
++ Response 200 (application/json)
+
+        {}
+        
++ Response 400 (application/json)
+    
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2, 
+                "error": "The session has expired." 
+            }
+        ]
+
 
 
 
