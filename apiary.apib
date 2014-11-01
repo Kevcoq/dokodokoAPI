@@ -52,6 +52,18 @@ Users related user of the **DokoDoko API**
                 "registerDate": 1414242910348}
         ]
 
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
 
 
 
@@ -75,7 +87,7 @@ Users related user of the **DokoDoko API**
 
         {}
         
-+ Response 400 (application/json)
++ Response 409 (application/json)
     
         [
             {
@@ -156,6 +168,19 @@ A single user object with all its details
                 "registerDate": 1414242910342
             }
  
+
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
  
  
  
@@ -194,7 +219,7 @@ Log the user to the application and retrive is sessionKey.
                 "sessionKey" : "afcgggv54czgvegre" 
             }
             
-+ Response 400 (application/json)
++ Response 401 (application/json)
 
     + Body
     
@@ -209,8 +234,7 @@ Log the user to the application and retrive is sessionKey.
                 }
             ]
  
- 
- 
+
  
  
  
@@ -244,7 +268,7 @@ Verify the key of the User. This is an info not an endpoint.
             false 
         ]
 
-+ Response 400 (application/json)
++ Response 401 (application/json)
 
         [
             { 
@@ -290,7 +314,7 @@ Logout the user.
 
         {}
 
-+ Response 400 (application/json)
++ Response 401 (application/json)
 
         [
             { 
@@ -362,7 +386,7 @@ Update the profile of an User.
 
         {}
 
-+ Response 400 (application/json)
++ Response 401 (application/json)
 
         [
             { 
@@ -455,6 +479,18 @@ Dokos related doko of the **DokoDoko API**
             }
         ]
  
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
  
  
  
@@ -481,30 +517,32 @@ Dokos related doko of the **DokoDoko API**
         
 + Response 201 (application/json)
 
-        [
-            {
-                "id": 1,
-                "latitude": 48.856614,
-                "longitude": 2.3522219,
-                "userId": 1,
-                "date": 1414258311572,
-                "text": "Avec des potes.",
-                "picture": null
-            }
-        ]
-        
+        {}
+
 + Response 400 (application/json)
-    
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument" 
+        }
+ 
+         
++ Response 401 (application/json)
+
         [
             { 
                 "error_code": 1, 
                 "error": "User with this sessionKey not found." 
             },
             { 
-                "error_code": 2, 
+                "error_code": 2,
                 "error": "The session has expired." 
             }
         ]
+ 
+ 
+
+
 
 
 
@@ -523,21 +561,39 @@ Dokos related doko of the **DokoDoko API**
         
 + Response 200 (application/json)
 
-        {}
-        
+        [
+            {
+                "id": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "userId": 1,
+                "date": 1414258311572,
+                "text": "Avec des potes.",
+                "picture": null
+            }
+        ]
+ 
 + Response 400 (application/json)
-    
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument" 
+        }
+        
++ Response 401 (application/json)
+
         [
             { 
                 "error_code": 1, 
                 "error": "User with this sessionKey not found." 
             },
             { 
-                "error_code": 2, 
+                "error_code": 2,
                 "error": "The session has expired." 
             }
         ]
-
+ 
+ 
 
 
 
