@@ -695,12 +695,12 @@ Groups related groups of the **DokoDoko API**
 
 
 
-## Group  [/groups/{groupName}]
+## Group  [/groups/get/{groupName}]
 A single Group object with all its all friends
 + Parameters
     + groupName (required, string, `"superGroup"`) ... String  groupName.
 
-### Retrieve a Group [GET]
+### Retrieve a Group [POST]
 + Response 200 (application/json)
 
     + Header
@@ -711,7 +711,11 @@ A single Group object with all its all friends
 
             { "groupName": superGroup, [{"pseudo" :"titi}{"pseudo":"tata"}]}
 
-
+## Group  [/groups/delete/{groupName}]
+A single Group object with all its all friends
++ Parameters
+    + groupName (required, string, `"superGroup"`) ... String  groupName.
+    
 ### Delete a group [POST]
 + Request (application/json)
 
