@@ -675,10 +675,16 @@ Groups related groups of the **DokoDoko API**
 + Response 201 (application/json) 
 
          { statut: true}
-        
-+ Response 400 (application/json) 
+          
++ Response 409 (application/json)
+    
+        [
+            {
+                "error_code": 1, 
+                "error": "This group already exists." 
+            }
+        ]
 
-          { "error_code": 1, "error": "This group already exists." }
 
 
 
