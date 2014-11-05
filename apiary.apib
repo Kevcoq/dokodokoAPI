@@ -476,23 +476,53 @@ Dokos related doko of the **DokoDoko API**
 
         [
             {
-                "id": 1,
-                "latitude": 48.856614,
-                "longitude": 2.3522219,
-                "userId": 1,
-                "date": 1414258311572,
-                "text": "Avec des potes.",
-                "picture": null
+                "doko" :
+                {
+                    "id": 1,
+                    "latitude": 48.856614,
+                    "longitude": 2.3522219,
+                    "userId": 1,
+                    "date": 1414258311572,
+                    "text": "Avec des potes.",
+                    "picture": null
+                },
+                "user" :
+                {
+                   "id": 1,
+                   "lastName": "Dupont",
+                    "firstName": "Jean",
+                    "birthDate": -303955200000,
+                    "city": "Paris",
+                    "country": "France",
+                    "phone": "0600010203",
+                    "email": "jean.dupont@aol.fr",
+                    "registerDate": 1415222416267
+                }
             },
             {
-                "id": 2,
-                "latitude": 1.856614,
-                "longitude": 50.3522219,
-                "userId": 1,
-                "date": 1414258327303,
-                "text": null,
-                "picture": null
-            }
+                "doko" :
+                {
+                    "id": 2,
+                    "latitude": 48.8169855,
+                    "longitude": 2.3585835,
+                    "userId": 2,
+                    "date": 1415227811878,
+                    "text": null,
+                    "picture": null
+                },
+                "user" :
+                {
+                   "id": 2,
+                   "lastName": "Durant",
+                    "firstName": "Bob",
+                    "birthDate": -203855650000,
+                    "city": "Versailles",
+                    "country": "France",
+                    "phone": "0600010205",
+                    "email": "bob.durant@wanadoo.com",
+                    "registerDate": 1515662416047
+                }
+            }            
         ]
  
 + Response 401 (application/json)
@@ -579,14 +609,53 @@ Dokos related doko of the **DokoDoko API**
 
         [
             {
-                "id": 1,
-                "latitude": 48.856614,
-                "longitude": 2.3522219,
-                "userId": 1,
-                "date": 1414258311572,
-                "text": "Avec des potes.",
-                "picture": null
-            }
+                "doko" :
+                {
+                    "id": 1,
+                    "latitude": 48.856614,
+                    "longitude": 2.3522219,
+                    "userId": 1,
+                    "date": 1414258311572,
+                    "text": "Avec des potes.",
+                    "picture": null
+                },
+                "user" :
+                {
+                   "id": 1,
+                   "lastName": "Dupont",
+                    "firstName": "Jean",
+                    "birthDate": -303955200000,
+                    "city": "Paris",
+                    "country": "France",
+                    "phone": "0600010203",
+                    "email": "jean.dupont@aol.fr",
+                    "registerDate": 1415222416267
+                }
+            },
+            {
+                "doko" :
+                {
+                    "id": 2,
+                    "latitude": 48.8169855,
+                    "longitude": 2.3585835,
+                    "userId": 2,
+                    "date": 1415227811878,
+                    "text": null,
+                    "picture": null
+                },
+                "user" :
+                {
+                   "id": 2,
+                   "lastName": "Durant",
+                    "firstName": "Bob",
+                    "birthDate": -203855650000,
+                    "city": "Versailles",
+                    "country": "France",
+                    "phone": "0600010205",
+                    "email": "bob.durant@wanadoo.com",
+                    "registerDate": 1515662416047
+                }
+            }            
         ]
  
 + Response 400 (application/json)
