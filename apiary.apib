@@ -214,9 +214,17 @@ Log the user to the application and retrive is sessionKey.
 
     + Body
     
-            { 
-                "id" : 1, 
-                "sessionKey" : "afcgggv54czgvegre" 
+            {
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "email": "jean.dupont@aol.fr",
+                "registerDate": 1415222416267,
+                "sessionKey": "kiy1e0ekd57fxsdrkgac5y9a67kmyii7"
             }
             
 + Response 401 (application/json)
@@ -263,10 +271,18 @@ Verify the key of the User. This is an info not an endpoint.
         
 + Response 200 (application/json)
 
-        [ 
-            true, 
-            false 
-        ]
+            {
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "email": "jean.dupont@aol.fr",
+                "registerDate": 1415222416267,
+                "sessionKey": "kiy1e0ekd57fxsdrkgac5y9a67kmyii7"
+            }
 
 + Response 401 (application/json)
 
