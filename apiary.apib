@@ -387,19 +387,30 @@ Update the profile of an User.
 ### Update Profile [POST]
 + Request (application/json)
 
-        { 
-            "id": 1,
-            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r",
-            "city": "Paris", 
-            "country": "France", 
-            "phone": "0600010203", 
-            "email": "jean.dupont@aol.fr", 
-            "password": "azerty" 
+        {
+            "password" : "azerty",
+            "user" : 
+            { 
+                "id": 1,
+                "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r",
+                "city": "Paris", 
+                "country": "France", 
+                "phone": "0600010203", 
+                "email": "jean.dupont@aol.fr", 
+                "password": "123456" 
+            }
         }
 
 + Response 200 (application/json)
 
         {}
+
++ Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "The current password is wrong." 
+        }
 
 + Response 401 (application/json)
 
