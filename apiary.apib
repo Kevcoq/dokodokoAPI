@@ -28,8 +28,8 @@ Users related user of the **DokoDoko API**
             "country": "France", 
             "birthDate": "1960-05-15", 
             "phone": "0600010203", 
-            "email": "jean.dupont@aol.fr", 
-            "password": "azerty" 
+            "email": "jean.dupont@truc.fr", 
+            "password": "4Zerty" 
         }
 
 + Response 201 (application/json)
@@ -76,7 +76,7 @@ Users related user of the **DokoDoko API**
                 }
             },
             {
-                "email" : "jean.dupont@aol.fr",
+                "email" : "jean.dupont@truc.fr",
                 "user" :
                 {
                     "id" : 1, 
@@ -109,7 +109,7 @@ Users related user of the **DokoDoko API**
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
+                "email": "jean.dupont@truc.fr",
                 "registerDate": 1414242910342
             }
  
@@ -143,11 +143,11 @@ Log the user to the application and retrive is sessionKey.
         [
             { 
                 "email": "jean.dupont@aol.fr",
-                "password": "azerty" 
+                "password": "4Zerty" 
             },
             { 
                 "phone": "0600010203", 
-                "password": "azerty" 
+                "password": "4Zerty" 
             }
         ]
 
@@ -167,7 +167,7 @@ Log the user to the application and retrive is sessionKey.
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
+                "email": "jean.dupont@truc.fr",
                 "registerDate": 1415222416267,
                 "sessionKey": "kiy1e0ekd57fxsdrkgac5y9a67kmyii7"
             }
@@ -224,7 +224,7 @@ Verify the key of the User. This is an info not an endpoint.
                 "city": "Paris",
                 "country": "France",
                 "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
+                "email": "jean.dupont@truc.fr",
                 "registerDate": 1415222416267
             }
 
@@ -333,16 +333,13 @@ Update the profile of an User.
 + Request (application/json)
 
         {
-            "password" : "azerty",
+            "password" : "4Zerty",
             "user" : 
             { 
                 "id": 1,
                 "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r",
-                "city": "Paris", 
-                "country": "France", 
-                "phone": "0600010203", 
-                "email": "jean.dupont@aol.fr", 
-                "password": "123456" 
+                "city": "Tokyo", 
+                "country": "Japon",
             }
         }
 
@@ -470,7 +467,7 @@ Dokos related doko of the **DokoDoko API**
 
         {
             "sessionKey" : "0qaj0z84vdxjgfsewnn6o0ox4otyzzzi",
-            "distance" : 15,
+            "distance" : 1500,
             "doko" : {
                 "userId": 1,
                 "latitude": 48.856614,
