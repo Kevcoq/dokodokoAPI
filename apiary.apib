@@ -18,57 +18,6 @@ Users related user of the **DokoDoko API**
 
 
 ## Users Collection [/users]
-### List all user [POST]
-+ Request (application/json)
-
-        { 
-            "id" : 1, 
-            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
-        }
-        
-+ Response 200 (application/json)
-
-        [
-            {   
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@aol.fr",
-                "registerDate": 1414242910342
-            }, 
-            {   
-                "id": 2,
-                "lastName": "Durand",
-                "firstName": "Marcel",
-                "birthDate": -309448600000,
-                "city": "Versaille",
-                "country": "France",
-                "phone": "0600010205",
-                "email": "marcel.durand@club-internet.fr",
-                "registerDate": 1414242910348}
-        ]
-
-+ Response 401 (application/json)
-
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
-
-
-
-
-
 ### Create a User [PUT]
 + Request (application/json)
 
@@ -114,23 +63,12 @@ Users related user of the **DokoDoko API**
 
 
 
-
-
-
-
-
-
-
-## User [/user/]
-A single user object with all its details
-
-
-### Retrieve a User [POST]
+### Retrieve Users with parameters : list of user's id, one email or one phone [POST]
 + Request (application/json)
 
         [
             {
-                "id" : 1,
+                "ids" : [1],
                 "user" :
                 {
                     "id" : 1, 
@@ -473,87 +411,6 @@ Update the profile of an User.
 
 # Group Dokos
 Dokos related doko of the **DokoDoko API**
-
-
-
-
-
-
-
-## Dokos Collection [/dokos/all]
-### List all doko [POST]
-+ Request (application/json)
-
-        { 
-            "id" : 1, 
-            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
-        }
-        
-+ Response 200 (application/json)
-
-        [
-            {
-                "doko" :
-                {
-                    "id": 1,
-                    "latitude": 48.856614,
-                    "longitude": 2.3522219,
-                    "userId": 1,
-                    "date": 1414258311572,
-                    "text": "Avec des potes.",
-                    "picture": null
-                },
-                "user" :
-                {
-                   "id": 1,
-                   "lastName": "Dupont",
-                    "firstName": "Jean",
-                    "birthDate": -303955200000,
-                    "city": "Paris",
-                    "country": "France",
-                    "phone": "0600010203",
-                    "email": "jean.dupont@aol.fr",
-                    "registerDate": 1415222416267
-                }
-            },
-            {
-                "doko" :
-                {
-                    "id": 2,
-                    "latitude": 48.8169855,
-                    "longitude": 2.3585835,
-                    "userId": 2,
-                    "date": 1415227811878,
-                    "text": null,
-                    "picture": null
-                },
-                "user" :
-                {
-                   "id": 2,
-                   "lastName": "Durant",
-                    "firstName": "Bob",
-                    "birthDate": -203855650000,
-                    "city": "Versailles",
-                    "country": "France",
-                    "phone": "0600010205",
-                    "email": "bob.durant@wanadoo.com",
-                    "registerDate": 1515662416047
-                }
-            }            
-        ]
- 
-+ Response 401 (application/json)
-
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
  
  
  
@@ -563,7 +420,6 @@ Dokos related doko of the **DokoDoko API**
 
 
 ## Doko Create [/dokos/]
-
 ### Create a Doko [PUT]
 + Request (application/json)
 
@@ -626,52 +482,22 @@ Dokos related doko of the **DokoDoko API**
 
         [
             {
-                "doko" :
-                {
-                    "id": 1,
-                    "latitude": 48.856614,
-                    "longitude": 2.3522219,
-                    "userId": 1,
-                    "date": 1414258311572,
-                    "text": "Avec des potes.",
-                    "picture": null
-                },
-                "user" :
-                {
-                   "id": 1,
-                   "lastName": "Dupont",
-                    "firstName": "Jean",
-                    "birthDate": -303955200000,
-                    "city": "Paris",
-                    "country": "France",
-                    "phone": "0600010203",
-                    "email": "jean.dupont@aol.fr",
-                    "registerDate": 1415222416267
-                }
+                "id": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "userId": 1,
+                "date": 1414258311572,
+                "text": "Avec des potes.",
+                "picture": null
             },
             {
-                "doko" :
-                {
-                    "id": 2,
-                    "latitude": 48.8169855,
-                    "longitude": 2.3585835,
-                    "userId": 2,
-                    "date": 1415227811878,
-                    "text": null,
-                    "picture": null
-                },
-                "user" :
-                {
-                   "id": 2,
-                   "lastName": "Durant",
-                    "firstName": "Bob",
-                    "birthDate": -203855650000,
-                    "city": "Versailles",
-                    "country": "France",
-                    "phone": "0600010205",
-                    "email": "bob.durant@wanadoo.com",
-                    "registerDate": 1515662416047
-                }
+                "id": 2,
+                "latitude": 48.8169855,
+                "longitude": 2.3585835,
+                "userId": 2,
+                "date": 1415227811878,
+                "text": null,
+                "picture": null
             }            
         ]
  
@@ -696,6 +522,7 @@ Dokos related doko of the **DokoDoko API**
         ]
  
  
+
 
 
 
@@ -924,5 +751,134 @@ A single Group object with all its all friends
 
          {"error_code": 3, "error": "This group doesn't exist." }         
 
-         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Group Administrator
+Administrator privilege about **DokoDoko API**
+
+
+## Users Collection [/admin/users]
+### List all user [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
++ Response 200 (application/json)
+
+        [
+            {   
+                "id": 1,
+                "lastName": "Dupont",
+                "firstName": "Jean",
+                "birthDate": -303955200000,
+                "city": "Paris",
+                "country": "France",
+                "phone": "0600010203",
+                "email": "jean.dupont@aol.fr",
+                "registerDate": 1414242910342
+            }, 
+            {   
+                "id": 2,
+                "lastName": "Durand",
+                "firstName": "Marcel",
+                "birthDate": -309448600000,
+                "city": "Versaille",
+                "country": "France"
+                }
+        ]
+
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
+        
+        
+        
+        
+        
+        
+        
+## Dokos Collection [/admin/dokos/all]
+### List all doko [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "latitude": 48.856614,
+                "longitude": 2.3522219,
+                "userId": 1,
+                "date": 1414258311572,
+                "text": "Avec des potes.",
+                "picture": null
+            },
+            {
+                "id": 2,
+                "latitude": 12.8169855,
+                "longitude": -15.3585835,
+                "userId": 2,
+                "date": 1415227811878,
+                "text": null,
+                "picture": null
+            }            
+        ]
+ 
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
          
