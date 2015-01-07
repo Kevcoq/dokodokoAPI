@@ -66,32 +66,37 @@ Users related user of the **DokoDoko API**
 ### Retrieve Users with parameters : list of user's id, one email or one phone [POST]
 + Request (application/json)
 
-        [
+        {
+            "ids" : [1],
+            "user" :
             {
-                "ids" : [1],
-                "user" :
-                {
-                    "id" : 1, 
-                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
-                }
-            },
+                "id" : 1, 
+                "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+            }
+        }
+ 
++ Request (application/json)
+
+        {
+            "email" : "jean.dupont@truc.fr",
+            "user" :
             {
-                "email" : "jean.dupont@truc.fr",
-                "user" :
-                {
-                    "id" : 1, 
-                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
-                }
-            },
+                "id" : 1, 
+                "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+            }
+        }
+        
++ Request (application/json)
+
+        {
+            "phone" : "0600010203",
+            "user" :
             {
-                "phone" : "0600010203",
-                "user" :
-                {
-                    "id" : 1, 
-                    "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
-                }
-            },
-        ]
+                "id" : 1, 
+                "sessionKey": "rtljzthmgekohbjfaqjcl9djmudmsepo" 
+            }
+        }
+        
         
 + Response 200 (application/json)
 
@@ -116,16 +121,17 @@ Users related user of the **DokoDoko API**
 
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
  
  
  
@@ -134,22 +140,23 @@ Users related user of the **DokoDoko API**
 
 
 
-## User Login [/user/login/]
+## Login [/user/login/]
 Log the user to the application and retrive is sessionKey.
 
 ### Login a User [POST]
 + Request (application/json)
 
-        [
-            { 
-                "email": "jean.dupont@aol.fr",
-                "password": "4Zerty" 
-            },
-            { 
-                "phone": "0600010203", 
-                "password": "4Zerty" 
-            }
-        ]
+        { 
+            "phone": "0600010203", 
+            "password": "4Zerty" 
+        }
+
++ Request (application/json)
+
+        { 
+            "email": "jean.dupont@aol.fr",
+            "password": "4Zerty" 
+        }
 
 + Response 200 (application/json)
 
@@ -174,18 +181,17 @@ Log the user to the application and retrive is sessionKey.
             
 + Response 401 (application/json)
 
-    + Body
-    
-            [
-                { 
-                    "error_code": 1, 
-                    "error": "Incorrect username" 
-                },
-                { 
-                    "error_code": 2, 
-                    "error": "Incorrect password" 
-                }
-            ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
  
 
  
@@ -203,7 +209,7 @@ Log the user to the application and retrive is sessionKey.
  
  
  
-## User VerifyKey [/user/verifyKey/]
+## VerifyKey [/user/verifyKey/]
 Verify the key of the User. This is an info not an endpoint.
 
 ### Verify the Key of an User [POST]
@@ -230,16 +236,17 @@ Verify the key of the User. This is an info not an endpoint.
 
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
 
  
  
@@ -259,7 +266,7 @@ Verify the key of the User. This is an info not an endpoint.
  
  
             
-## User Logout [/user/logout/]
+## Logout [/user/logout/]
 Logout the user.
 
 ### Disconnect a User [POST]
@@ -276,16 +283,17 @@ Logout the user.
 
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2, 
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
 
 
 
@@ -299,7 +307,7 @@ Logout the user.
 
 
 
-## User forgetPassword [/user/forgetPassword/]
+## Forget Password [/user/forgetPassword/]
 Not implemented
 
 ###ForgetPassword [POST]
@@ -326,7 +334,7 @@ Not implemented
 
 
 
-## User UpdateProfile [/user/updateProfile/]
+## Update Profile [/user/updateProfile/]
 Update the profile of an User.
 
 ### Update Profile [POST]
@@ -356,16 +364,17 @@ Update the profile of an User.
 
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2, 
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
 
 
 
@@ -409,9 +418,7 @@ Update the profile of an User.
 # Group Dokos
 Dokos related doko of the **DokoDoko API**
  
- 
- 
- 
+
  
 
 
@@ -441,20 +448,20 @@ Dokos related doko of the **DokoDoko API**
             "error_code": 3, 
             "error": "Invalid argument" 
         }
- 
          
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
  
  
 
@@ -504,16 +511,17 @@ Dokos related doko of the **DokoDoko API**
         
 + Response 401 (application/json)
 
-        [
-            { 
-                "error_code": 1, 
-                "error": "User with this sessionKey not found." 
-            },
-            { 
-                "error_code": 2,
-                "error": "The session has expired." 
-            }
-        ]
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
  
  
 
@@ -557,7 +565,7 @@ Groups related groups of the **DokoDoko API**
 
 
 ## Groups Collection  [/groups]
-### List all groups [POST]
+### List all groups for a user [POST]
 + Request (application/json)
 
         { 
@@ -569,19 +577,21 @@ Groups related groups of the **DokoDoko API**
 
         [
             {
-                nameGroup: "superGroup1",
-                users:
+                "id": 1
+                "groupName": "amis",
+                "friendId":
                 [
-                    {"pseudo":"titi"},
-                    {"pseudo":"tata"}
+                    10,
+                    12
                 ]
             },
             {
-                nameGroup: "superGroup2",
-                users:
+                "id": 2
+                "groupName": "fac",
+                "friendId":
                 [
-                    {"pseudo" :"paul"},
-                    {"pseudo":"darkvador"}
+                   5,
+                   24
                 ]
             }
         ]
@@ -591,22 +601,24 @@ Groups related groups of the **DokoDoko API**
 + Request (application/json)
 
         {
-            "sessionKey": "afcgggv54czgvegre", 
-            "groupName":"superGroup"
+            "group": 
+            {
+                "userId": 1,
+                "groupName":"upmc"
+            },
+            "sessionKey": "afcgggv54czgvegre" 
         }
     
 + Response 201 (application/json) 
 
-         { statut: true}
+        {}
           
 + Response 409 (application/json)
     
-        [
-            {
-                "error_code": 1, 
-                "error": "This group already exists." 
-            }
-        ]
+        {
+            "error_code": 4, 
+            "error": "This group already exists." 
+        }
 
 + Response 400 (application/json)
 
@@ -614,11 +626,24 @@ Groups related groups of the **DokoDoko API**
             "error_code": 3, 
             "error": "Invalid argument "
         }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
 
 
-
-
-## Group  [/groups/{groupName}]
+## Group /a revoir/ [/groups/{groupName}]
+TODO : a revoir
 A single Group object with all its all friends
 + Parameters
     + groupName (required, string, `"superGroup"`) ... String  groupName.
@@ -635,117 +660,182 @@ A single Group object with all its all friends
             { "groupName": superGroup, [{"pseudo" :"titi}{"pseudo":"tata"}]}
 
 
-### Delete a group [POST]
+## Delete [/group/delete]
+### Delete a group [DELETE]
 + Request (application/json)
 
-        {"sessionKey": "agjci456gcg65fxq46", "groupName":"superGroup" }
+        {
+            "group": 
+            {
+                "userId": 1,
+                "groupName":"upmc"
+            },
+            "sessionKey": "afcgggv54czgvegre" 
+        }
         
 + Response 201 (application/json)
         
-        { statut: true}
-+   Response 400 (application/json)
-
-         { "error_code": 1, "error": "User with this sessionKey not found." }
+        {}
          
 +   Response 400 (application/json) 
        
-         {"error_code": 2, "error": "You don't have the right to delete this group." }
+        {
+            "error_code": 4, 
+            "error": "You don't have the right to delete this group." 
+        }
 
 +   Response 400 (application/json)
 
          {"error_code": 3, "error": "This group does not exist." }
 
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
+        
 
 
 
-
-## Group [/group/{groupName}/addFiend/]
-
-
+## Add Friend [/group/{groupName}/addFiend/]
 ### Add friend in group [POST]
-
 + Request (application/json)
         
-        {"sessionKey": "agjci456gcg65fxq46", "friendId":"42", "groupName":"superGroup" }
+        {
+            "group": 
+            {
+                "id": 1,
+                "userId": 1
+            },
+            "sessionKey": "afcgggv54czgvegre",
+            "friendId": 2
+        }
 
 +   Response 201 (application/json)
 
-        { statut: true}
+        {}
+         
++   Response 400 (application/json)
+
+         {"error_code": 3, "error": "This group does not exist." }         
+         
++   Response 400 (application/json)
+
+         { "error_code": 4, "error": "This user does not exist." }
+         
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
         
-+   Response 400 (application/json)
++ Response 401 (application/json)
 
-         { "error_code": 1, "error": "User with this sessionKey not found." }
-         
-+   Response 400 (application/json)
-
-         {"error_code": 2, "error": "This group does not exist." }         
-         
-+   Response 400 (application/json)
-
-         { "error_code": 3, "error": "this user does not exist." }
-         
-         
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }         
    
    
    
    
          
-## Group [/group/acceptFriendRequest/]
-
-
+## Accept Request /a revoir/ [/group/acceptFriendRequest/]
 ### accept friend request [POST]
-
 +   Request (application/json)
         
         {"sessionKey": "agjci456gcg65fxq46", "requestID":"23", "accept":"true" , "groupName":"superGroup"}
 
 +   Response 201 (application/json)
 
-        { statut: true}
+        {
+         
++   Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "This requestID doesn't found." 
+        }
+         
++   Response 400 (application/json)
+
+        {
+            "error_code": 4, 
+            "error": "This group doesn't exist." 
+        }         
+ 
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
         
-+   Response 400 (application/json)
++ Response 401 (application/json)
 
-         { "error_code": 1, "error": "User with this sessionKey not found." }
-         
-+   Response 400 (application/json)
-
-         { "error_code": 2, "error": "this requestID doesn't found." }
-         
-+   Response 400 (application/json)
-
-         {"error_code": 3, "error": "This group doesn't exist." }         
- 
- 
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }    
  
  
  
          
-## Group [/group/{groupName}/deleteFriend/]
-
-
-### delete friend  [DELETE]
+## Delete Friend [/group/{groupName}/deleteFriend/]
+### delete friend [DELETE]
 
 +   Request (application/json)
         
-        {"sessionKey": "agjci456gcg65fxq46", "friendId":"42"}
+        {
+            "group": 
+            {
+                "id": 1,
+                "userId": 1
+            },
+            "sessionKey": "afcgggv54czgvegre",
+            "friendId": 2
+        }
 
 +   Response 201 (application/json)
 
-        { statut: true}
+        {}
+         
++   Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "This user doesn't found." 
+        }
+         
++   Response 400 (application/json)
+
+        {
+            "error_code": 4, 
+            "error": "This group doesn't exist." 
+        }         
+
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
         
-+   Response 400 (application/json)
++ Response 401 (application/json)
 
-         { "error_code": 1, "error": "User with this sessionKey not found." }
-         
-+   Response 400 (application/json)
-
-         { "error_code": 2, "error": "This user doesn't found." }
-         
-+   Response 400 (application/json)
-
-         {"error_code": 3, "error": "This group doesn't exist." }         
-
-
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }   
 
 
 
