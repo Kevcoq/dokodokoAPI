@@ -999,3 +999,35 @@ Administrator privilege about **DokoDoko API**
                 "error": "The session has expired." 
             }
         ]
+        
+## Friend requests List All [/admin/friendrequests]
+### List all friend requests [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
++ Response 200 (application/json)
+
+        [
+            {   
+                "userId": 1,
+                "friendId": 2,
+                "groupName": "superGroup"
+            }
+        ]
+
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
