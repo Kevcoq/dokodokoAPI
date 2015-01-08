@@ -868,7 +868,6 @@ A single Group object with all its all friends
 # Group Administrator
 Administrator privilege about **DokoDoko API**
 
-
 ## Users List All [/admin/users]
 ### List all user [POST]
 + Request (application/json)
@@ -915,12 +914,7 @@ Administrator privilege about **DokoDoko API**
             }
         ]
         
-        
-        
-        
-        
-        
-        
+
 ## Dokos List All [/admin/dokos/all]
 ### List all doko [POST]
 + Request (application/json)
@@ -966,3 +960,42 @@ Administrator privilege about **DokoDoko API**
             }
         ]
          
+         
+## Groups List All [/admin/groups]
+### List all groups [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "anjobsj7dnd58aeo1wd35coguteoamrj" 
+        }
+        
++ Response 200 (application/json)
+
+        [
+            {   
+                "id": 1,
+                "groupName": "superGroup",
+                "userId": 1,
+                "friendId": [ ]
+            }, 
+            {   
+                "id": 2,
+                "groupName": "awesomeGroup",
+                "userId": 2,
+                "friendId": [ ]
+            }
+        ]
+
++ Response 401 (application/json)
+
+        [
+            { 
+                "error_code": 1, 
+                "error": "User with this sessionKey not found." 
+            },
+            { 
+                "error_code": 2,
+                "error": "The session has expired." 
+            }
+        ]
