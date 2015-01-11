@@ -17,7 +17,7 @@ DokoDoko API is a *mobile application* where you share your location with your f
 Users related user of the **DokoDoko API**
 
 
-## Users Collection [/users]
+## Users Collection [/users/]
 ### Create a User [PUT]
 + Request (application/json)
 
@@ -36,12 +36,12 @@ Users related user of the **DokoDoko API**
 
         {}
         
-+ Response 400 (application/json)
+<!--+ Response 400 (application/json)-->
     
-        {
-            "error_code": 3, 
-            "error": "Incorrect email" 
-        }
+<!--        {-->
+<!--            "error_code": 3, -->
+<!--            "error": "Incorrect email" -->
+<!--        }-->
 
 + Response 409 (application/json)
     
@@ -100,24 +100,24 @@ Users related user of the **DokoDoko API**
         
 + Response 200 (application/json)
 
-    + Header
+        {
+            "id": 1,
+            "lastName": "Dupont",
+            "firstName": "Jean",
+            "birthDate": -303955200000,
+            "city": "Paris",
+            "country": "France",
+            "phone": "0600010203",
+            "email": "jean.dupont@truc.fr",
+            "registerDate": 1414242910342
+        }
 
-            X-My-Header: The Value
++ Response 400 (application/json)
 
-    + Body
-        
-            {
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@truc.fr",
-                "registerDate": 1414242910342
-            }
- 
+        { 
+            "error_code": 3, 
+            "error": "None of the attributes used to determine the user."
+        } 
 
 + Response 401 (application/json)
 
@@ -132,6 +132,11 @@ Users related user of the **DokoDoko API**
             "error_code": 2,
             "error": "The session has expired." 
         }
+ 
+ 
+ 
+ 
+ 
  
  
  
@@ -160,24 +165,18 @@ Log the user to the application and retrive is sessionKey.
 
 + Response 200 (application/json)
 
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-    
-            {
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@truc.fr",
-                "registerDate": 1415222416267,
-                "sessionKey": "kiy1e0ekd57fxsdrkgac5y9a67kmyii7"
-            }
+        {
+            "id": 1,
+            "lastName": "Dupont",
+            "firstName": "Jean",
+            "birthDate": -303955200000,
+            "city": "Paris",
+            "country": "France",
+            "phone": "0600010203",
+            "email": "jean.dupont@truc.fr",
+            "registerDate": 1415222416267,
+            "sessionKey": "kiy1e0ekd57fxsdrkgac5y9a67kmyii7"
+        }
             
 + Response 401 (application/json)
 
@@ -222,17 +221,17 @@ Verify the key of the User. This is an info not an endpoint.
         
 + Response 200 (application/json)
 
-            {
-                "id": 1,
-                "lastName": "Dupont",
-                "firstName": "Jean",
-                "birthDate": -303955200000,
-                "city": "Paris",
-                "country": "France",
-                "phone": "0600010203",
-                "email": "jean.dupont@truc.fr",
-                "registerDate": 1415222416267
-            }
+        {
+            "id": 1,
+            "lastName": "Dupont",
+            "firstName": "Jean",
+            "birthDate": -303955200000,
+            "city": "Paris",
+            "country": "France",
+            "phone": "0600010203",
+            "email": "jean.dupont@truc.fr",
+            "registerDate": 1415222416267
+        }
 
 + Response 401 (application/json)
 
@@ -415,6 +414,10 @@ Update the profile of an User.
 
 
 
+
+
+
+
 # Group Dokos
 Dokos related doko of the **DokoDoko API**
  
@@ -446,7 +449,7 @@ Dokos related doko of the **DokoDoko API**
 
         { 
             "error_code": 3, 
-            "error": "Invalid argument" 
+            "error": "Invalid argument." 
         }
          
 + Response 401 (application/json)
@@ -464,6 +467,13 @@ Dokos related doko of the **DokoDoko API**
         }
  
  
+
+
+
+
+
+
+
 
 
 ### List Doko By scope & Group [POST]
@@ -506,7 +516,7 @@ Dokos related doko of the **DokoDoko API**
 
         { 
             "error_code": 3, 
-            "error": "Invalid argument" 
+            "error": "Invalid argument." 
         }
         
 + Response 401 (application/json)
@@ -564,7 +574,7 @@ Dokos related doko of the **DokoDoko API**
 Groups related groups of the **DokoDoko API**
 
 
-## Groups Collection  [/groups]
+## Groups Collection  [/groups/]
 ### List all groups for a user [POST]
 + Request (application/json)
 
@@ -595,6 +605,28 @@ Groups related groups of the **DokoDoko API**
                 ]
             }
         ]
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
+
+
+
+
+
+
+
+
 
     
 ### Create a group [PUT]
@@ -624,7 +656,7 @@ Groups related groups of the **DokoDoko API**
 
         { 
             "error_code": 3, 
-            "error": "Invalid argument "
+            "error": "Invalid argument."
         }
         
 + Response 401 (application/json)
@@ -642,51 +674,35 @@ Groups related groups of the **DokoDoko API**
         }
 
 
-## Group /a revoir/ [/groups/{groupName}]
-TODO : a revoir
-A single Group object with all its all friends
-+ Parameters
-    + groupName (required, string, `"superGroup"`) ... String  groupName.
-
-### Retrieve a Group [GET]
-+ Response 200 (application/json)
-
-    + Header
-
-            X-My-Header: The Value
-
-    + Body
-
-            { "groupName": superGroup, [{"pseudo" :"titi}{"pseudo":"tata"}]}
 
 
-## Delete [/group/delete]
+
+
+
+
+
 ### Delete a group [DELETE]
 + Request (application/json)
 
         {
             "group": 
             {
-                "userId": 1,
-                "groupName":"upmc"
+                "id": 1,
+                "userId": 1
             },
             "sessionKey": "afcgggv54czgvegre" 
         }
         
-+ Response 201 (application/json)
++ Response 200 (application/json)
         
         {}
-         
-+   Response 400 (application/json) 
-       
-        {
-            "error_code": 4, 
-            "error": "You don't have the right to delete this group." 
+
++ Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument."
         }
-
-+   Response 400 (application/json)
-
-         {"error_code": 3, "error": "This group does not exist." }
 
 + Response 401 (application/json)
 
@@ -702,11 +718,36 @@ A single Group object with all its all friends
             "error": "The session has expired." 
         }
         
++   Response 404 (application/json)
+
+        {
+            "error_code": 4,
+            "error": "This group does not exist."
+        }
 
 
 
-## Add Friend [/group/{groupName}/addFiend/]
-### Add friend in group [POST]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Friends Collection [/groups/friend/]
+### Add friend in group [PUT]
 + Request (application/json)
         
         {
@@ -722,61 +763,35 @@ A single Group object with all its all friends
 +   Response 201 (application/json)
 
         {}
-         
-+   Response 400 (application/json)
 
-         {"error_code": 3, "error": "This group does not exist." }         
-         
-+   Response 400 (application/json)
-
-         { "error_code": 4, "error": "This user does not exist." }
-         
-+   Response 400 (application/json)
-
-         { "error_code": 5, "error": "This friend request does not exist." }
-         
-+ Response 401 (application/json)
-
-        { 
-            "error_code": 1, 
-            "error": "User with this sessionKey not found." 
-        }
-        
-+ Response 401 (application/json)
-
-        { 
-            "error_code": 2,
-            "error": "The session has expired." 
-        }         
-   
-   
-   
-   
-         
-## Accept Request /a revoir/ [/group/acceptFriendRequest/]
-### accept friend request [POST]
-+   Request (application/json)
-        
-        {"sessionKey": "agjci456gcg65fxq46", "requestID":"23", "accept":"true" , "groupName":"superGroup"}
-
-+   Response 201 (application/json)
-
-        {
-         
-+   Response 400 (application/json)
++ Response 400 (application/json)
 
         { 
             "error_code": 3, 
-            "error": "This requestID doesn't found." 
+            "error": "Invalid argument."
         }
-         
-+   Response 400 (application/json)
+        
++   Response 404 (application/json)
 
         {
-            "error_code": 4, 
-            "error": "This group doesn't exist." 
+            "error_code": 4,
+            "error": "This group does not exist."
         }         
- 
+         
++   Response 404 (application/json)
+
+        { 
+            "error_code": 5, 
+            "error": "This user does not exist." 
+        }
+         
++   Response 409 (application/json)
+
+        { 
+            "error_code": 6, 
+            "error": "This friend request already exists. 
+        }
+         
 + Response 401 (application/json)
 
         { 
@@ -789,12 +804,18 @@ A single Group object with all its all friends
         { 
             "error_code": 2,
             "error": "The session has expired." 
-        }    
- 
- 
- 
-         
-## Delete Friend [/group/{groupName}/deleteFriend/]
+        }         
+   
+
+
+
+
+
+
+
+
+
+   
 ### delete friend [DELETE]
 
 +   Request (application/json)
@@ -809,23 +830,30 @@ A single Group object with all its all friends
             "friendId": 2
         }
 
-+   Response 201 (application/json)
++   Response 200 (application/json)
 
         {}
          
-+   Response 400 (application/json)
++ Response 400 (application/json)
 
         { 
             "error_code": 3, 
-            "error": "This user doesn't found." 
+            "error": "Invalid argument."
         }
-         
-+   Response 400 (application/json)
+        
++   Response 404 (application/json)
 
         {
-            "error_code": 4, 
-            "error": "This group doesn't exist." 
+            "error_code": 4,
+            "error": "This group does not exist."
         }         
+         
++   Response 404 (application/json)
+
+        { 
+            "error_code": 5, 
+            "error": "This user does not exist." 
+        }       
 
 + Response 401 (application/json)
 
@@ -860,6 +888,134 @@ A single Group object with all its all friends
 
 
 
+   
+   
+
+
+## get users's FriendRequest  [/friendRequest/get/]
+### Get friendRequest [POST]
++   Request (application/json)
+        
+        { 
+            "id" : 1, 
+            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r" 
+        }
+
++   Response 200 (application/json)
+
+        {}
+ 
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }    
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+## Accept/Decline FriendRequest  [/friendRequest/]
+### Accept or decline friend request [POST]
++   Request (application/json)
+        
+        {
+            "friendRequest" :
+                {
+                    "id" :2,
+                    "userId" : 2,
+                    "groupId" : 2
+                },
+            "sessionKey" : "9202922d678c1705661b",
+            "statut": true
+        }
+
++   Response 200 (application/json)
+
+        {}
+         
++ Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument."
+        }
+         
++   Response 404 (application/json)
+
+        {
+            "error_code": 4,
+            "error": "This group does not exist."
+        }    
+        
++   Response 404 (application/json)
+
+        {
+            "error_code": 5,
+            "error": "This friend request does not exist."
+        }   
+ 
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -872,7 +1028,7 @@ A single Group object with all its all friends
 # Group Administrator
 Administrator privilege about **DokoDoko API**
 
-## Users List All [/admin/users]
+## Users List All [/admin/users/]
 ### List all user [POST]
 + Request (application/json)
 
@@ -917,9 +1073,25 @@ Administrator privilege about **DokoDoko API**
                 "error": "The session has expired." 
             }
         ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
 
-## Dokos List All [/admin/dokos/all]
+## Dokos List All [/admin/dokos/]
 ### List all doko [POST]
 + Request (application/json)
 
@@ -964,8 +1136,22 @@ Administrator privilege about **DokoDoko API**
             }
         ]
          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
          
-## Groups List All [/admin/groups]
+## Groups List All [/admin/groups/]
 ### List all groups [POST]
 + Request (application/json)
 
@@ -1003,8 +1189,25 @@ Administrator privilege about **DokoDoko API**
                 "error": "The session has expired." 
             }
         ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         
-## Friend requests List All [/admin/friendrequests]
+## Friend requests List All [/admin/friendRequests/]
 ### List all friend requests [POST]
 + Request (application/json)
 
