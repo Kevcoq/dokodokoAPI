@@ -1037,6 +1037,129 @@ Groups related groups of the **DokoDoko API**
 
 
 
+# Group Message
+Messages of the **DokoDoko API**
+ 
+
+ 
+
+
+
+## Message Collection [/messages/]
+### Create a message [PUT]
++ Request (application/json)
+
+        {
+            "sessionKey" : "0qaj0z84vdxjgfsewnn6o0ox4otyzzzi",
+            "message" : {
+                "userId": 1,
+                "recipientId": 2,
+                "text": "Avec des potes."
+            }
+        }
+        
++ Response 201 (application/json)
+
+        {}
+
++ Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument." 
+        }
+        
++   Response 404 (application/json)
+
+        {
+            "error_code": 4,
+            "error": "Recipient does not exist."
+        }  
+         
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
+ 
+ 
+
+
+
+
+
+
+
+
+
+### List message [POST]
++ Request (application/json)
+
+        { 
+            "id" : 1, 
+            "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r" 
+        }
+        
++ Response 200 (application/json)
+
+        [
+            {
+                "userId": 1,
+                "recipientId": 2,
+                "text": "Salut."
+            },
+            {
+                "userId": 1,
+                "recipientId": 2,
+                "text": "Avec des potes."
+            }         
+        ]
+ 
++ Response 400 (application/json)
+
+        { 
+            "error_code": 3, 
+            "error": "Invalid argument." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 1, 
+            "error": "User with this sessionKey not found." 
+        }
+        
++ Response 401 (application/json)
+
+        { 
+            "error_code": 2,
+            "error": "The session has expired." 
+        }
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
