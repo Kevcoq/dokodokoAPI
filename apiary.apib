@@ -911,13 +911,26 @@ Groups related groups of the **DokoDoko API**
 +   Request (application/json)
         
         { 
-            "id" : 1, 
+            "id" : 2, 
             "sessionKey": "8vh4eceml7z3b2tbwiwvgj42i46rnc7r" 
         }
 
 +   Response 200 (application/json)
 
-        {}
+        [
+            {
+                "id": 1,
+                "userId": 1,
+                "friendId": 2,
+                "groupId": 1
+            },
+            {
+                "id": 2,
+                "userId": 3,
+                "friendId": 2,
+                "groupId": 2
+            }
+        ]
  
 + Response 401 (application/json)
 
